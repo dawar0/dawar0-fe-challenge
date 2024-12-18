@@ -1,0 +1,25 @@
+name: Test solutions
+
+on: [push, pull_request]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ startsWith(github.ref, 'refs/pull/') }}
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: volta-cli/action@v4
+
+      - run: npm install
+
+      - name: JS challenge tests
+        run: npm test
+        working-directory: ./apps/01_js_challenge
+
+      - name: Build web challenge
+        run: npm run lint && npm run build
+        working-directory: ./apps/02_web_challenge
