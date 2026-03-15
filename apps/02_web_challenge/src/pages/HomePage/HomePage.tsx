@@ -1,6 +1,6 @@
 import { Heading } from '@/components/blocks/Heading';
-
 import { OrganizationSearchBar } from '@/components/blocks/OrganizationSearchBar';
+import { ThemeToggle } from '@/components/ThemeToggle';
 
 export default function HomePage() {
   return (
@@ -9,6 +9,7 @@ export default function HomePage() {
         'flex flex-col w-full items-center justify-center min-h-screen p-10 gap-4'
       }
     >
+      <ThemeToggle />
       <Heading className="text-center" />
       <div className="relative w-fit h-11">
         <div className="flex gap-2 absolute top-0 left-0 -translate-x-1/2">
